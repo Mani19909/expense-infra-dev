@@ -19,18 +19,29 @@ pipeline {
         }
         stage ("plan") {
             steps {
-                sh 'echo This is Test'
+                sh '''
+                cd 01-vpc
+                terraform plan
+                '''
             }
         }
         stage ('apply') {
+            input {
+                message "should we continus?"
+                ok "yes, we should."
+            }
             steps {
-                sh 'echo This is Deploy'
+                sh '''
+                cd 01-vpc
+                terraform apply -auto-approve
+                '''
             }
         }
     }
     post {
         always {
             echo 'I will always say Hello again!'
+            deleteDir()
         }
         success {
             echo 'I will run when pipeline is success'
