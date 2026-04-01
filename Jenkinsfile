@@ -6,23 +6,21 @@ pipeline {
         timeout (time: 30, unit: 'MINUTES')
         disableConCurrentBuilds()
     }
-    environment {
-        DEPLOY_TO = 'production'
-        GREETING = 'Good Morning'
-    } 
     stages {
-        stage ("build"){
+        stage ("init"){
             steps {
-                sh 'echo This is build'
-                sh 'env'
+                sh '''
+                 ls -ltr
+                '''
+                 
             }
         }
-        stage ("Test") {
+        stage ("plan") {
             steps {
                 sh 'echo This is Test'
             }
         }
-        stage ('Deploy') {
+        stage ('apply') {
             steps {
                 sh 'echo This is Deploy'
             }
