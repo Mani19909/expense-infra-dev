@@ -7,7 +7,7 @@ terraform {
     }
     backend  "s3"{
         bucket = "banckend-remote"
-        key = "expense-project-bastion"
+        key = "expense-project-vpn"
         region = "us-east-1"
         dynamodb_table = "remote-locking"
     }
