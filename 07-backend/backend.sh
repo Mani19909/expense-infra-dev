@@ -22,7 +22,7 @@ pip3 install botocore boto3
 echo "Running ansible-pull..."
 
 ansible-pull -i localhost, \
-  -U https://github.com/Mani19909/expense-ansible-roles.git \
+  -U https://github.com/Mani19909/expense-ansible-roles-tf.git \
   main.yaml \
   -e component=$component \
   -e env=$environment \
