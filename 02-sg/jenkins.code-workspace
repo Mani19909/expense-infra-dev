@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "../../jenkins"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../terraform-cicd"
+		},
+		{
+			"path": "../../backend"
+		},
+		{
+			"path": "../../backend-deploy"
+		},
+		{
+			"path": "../../expense-ansible-roles"
+		}
+	],
+	"settings": {}
+}

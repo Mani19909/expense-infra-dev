@@ -1,4 +1,4 @@
-module "db" {
+module "db_sg" {
     source = "git::https://github.com/Mani19909/terraform-infrastructure.git//terraform-aws-securitygroup"
     project_name = var.project_name
     environment = var.environment
@@ -237,7 +237,5 @@ resource "aws_security_group_rule" "web_alb_public_https" {
   cidr_blocks = ["0.0.0.0/0"]
   security_group_id = module.web_alb.sg_id
 }
-
-
 
 
