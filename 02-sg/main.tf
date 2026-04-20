@@ -1,4 +1,4 @@
-module "db_sg" {
+module "db" {
     source = "git::https://github.com/Mani19909/terraform-infrastructure.git//terraform-aws-securitygroup"
     project_name = var.project_name
     environment = var.environment
