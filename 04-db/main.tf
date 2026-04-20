@@ -30,7 +30,7 @@ module "db" {
     }
   )
 
-  #manage_master_user_password = false
+  manage_master_user_password = false
   password = "ExpenseApp1"
   skip_final_snapshot = true
 
