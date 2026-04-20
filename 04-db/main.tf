@@ -12,7 +12,8 @@ module "db" {
   username = "root"
   port     = "3306"
 
-  vpc_security_group_ids = [data.aws_ssm_parameter.db_sg_id.value]  
+  #vpc_security_group_ids = [data.aws_ssm_parameter.db_sg_id.value] 
+  vpc_security_group_ids = [module.db.sg_id] 
 
   # DB subnet group
   db_subnet_group_name = data.aws_ssm_parameter.db_subnet_group_name.value
