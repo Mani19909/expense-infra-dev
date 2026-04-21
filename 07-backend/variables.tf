@@ -16,6 +16,12 @@ variable "common_tags" {
      
 }
 
+variable "vault_password" {
+  description = "The password for Ansible Vault"
+  type        = string
+  default     = "ExpenseApp1" # Replace with your actual vault password
+}
+
 variable "zone_name" {
     default = "daws.info"
 }
