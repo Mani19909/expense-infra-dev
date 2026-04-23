@@ -11,7 +11,7 @@ resource "aws_cloudfront_distribution" "web_cdn" {
     }
 
     enabled   = true
-    aliases  = ["web-${var.common_tags}.${var.zone_name}"]
+    aliases  = ["web-${var.common_tags.component}.${var.zone_name}"]
     default_cache_behavior  {
         allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
         cached_methods = ["GET", "HEAD"]
