@@ -6,6 +6,6 @@ data "aws_cloudfront_cache_policy" "cache_disable" {
     name = "Managed-CachingDisabled"
 }
 
-data "aws_ssm_parameter" "acm_certicate_arn" {
+data "aws_ssm_parameter" "acm_certficate_arn" {
     name = "/${var.project_name}/${var.environment}/acm_certicate_arn"
 }
