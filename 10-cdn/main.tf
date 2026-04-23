@@ -13,7 +13,7 @@ resource "aws_cloudfront_distribution" "web_cdn" {
     enabled   = true
     aliases  = ["web-${var.common_tags}.${var.zone_name}"]
     default_cache_behavior  {
-        allow_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+        allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
         cached_methods = ["GET", "HEAD"]
         target_origin_id = "web-${var.environment}.${var.zone_name}"
 
@@ -21,7 +21,7 @@ resource "aws_cloudfront_distribution" "web_cdn" {
         default_ttl = 86400
         max_ttl   = 31536000
         compress   = true
-        viewviewer_protocol_policy = "redirect-to-https"
+        viewer_protocol_policy = "redirect-to-https"
         cache_policy_id  = data.aws_cloudfront_cache_policy.cache_disable.id
     }
 
@@ -40,7 +40,7 @@ resource "aws_cloudfront_distribution" "web_cdn" {
         cache_policy_id  = data.aws_cloudfront_cache_policy.cache_enable.id
     }
 
-    ordered_cache_behavior{
+    ordered_cache_behavior {
         path_pattern     = "/static/*"
         allowed_methods  = ["GET", "HEAD", "OPTIONS"]
         cached_methods   = ["GET", "HEAD", "OPTIONS"]
@@ -54,7 +54,7 @@ resource "aws_cloudfront_distribution" "web_cdn" {
 
     }
 
-    restriction {
+    restrictions {
         geo_restriction {
             restriction_type = "whitelist"
             locations = ["US", "IN", "GB", "DE"]
@@ -69,7 +69,7 @@ resource "aws_cloudfront_distribution" "web_cdn" {
     )
 
     viewer_certificate {
-        cm_certificate_arn = data.aws_ssm_parameter.acm_certificate_arn.value
+        acm_certificate_arn = data.aws_ssm_parameter.acm_certificate_arn.value
         minimum_protocol_version = "TLSv1.2_2021"
         ssl_support_method = "sni-only"
     }
